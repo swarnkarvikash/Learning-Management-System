@@ -5,6 +5,7 @@ import { config } from 'dotenv';
 import morgan from 'morgan';
 import useRoutes from './routes/user.routes.js';
 import errorMiddleware from './middlewares/error.middleware.js';
+import courseRoutes from './routes/course.routes.js';
 config();
 
 const app = express();
@@ -27,7 +28,9 @@ app.use(morgan('dev'));
 
 // routes of 3 modules
 
-app.use('/api/v1/user', useRoutes)
+app.use('/api/v1/user', useRoutes);
+app.use('/api/v1/courses',courseRoutes);
+
 
 app.all('*',(req,res) => {
     res.status(400).send('OOPS!! 404 page not found');
