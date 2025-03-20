@@ -7,7 +7,7 @@ import crypto from 'crypto';
 const userSchema = new Schema({
     fullName:{
         type: 'String',
-        required: [true, 'Name is requires=d'],
+        required: [true, 'Name is required'],
         minLength: [5, 'Name must be Atleast 5 charachter'],
         maxLength: [50, 'Name should be less than 50 characters'],
         lowercase: true,
@@ -19,9 +19,9 @@ const userSchema = new Schema({
         lowercase: true,
         trim: true,
         unique: true,
-        match: ['^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
-            'Please fill in a valid email address',
-        ]
+        // match: ['^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+        //     'Please fill in a valid email address',
+        // ]
     },
     password:{
         type: 'String',

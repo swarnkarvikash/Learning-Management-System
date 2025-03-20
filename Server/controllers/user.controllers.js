@@ -57,7 +57,7 @@ const register = async (req, res, next) => {
                 user.avatar.secure_url = result.secure.url;
 
                 //Remove file from server
-                FileSystem.rm(`uploads/${req.file.filename}`)
+                fs.rm(`uploads/${req.file.filename}`)
             }
         }catch(e){
             return next(
@@ -81,7 +81,7 @@ const register = async (req, res, next) => {
     });
 };
 
-const login = async (req, res) => {
+const login = async (req, res,next) => {
     try{
         const {email, password} = req.body;
 
