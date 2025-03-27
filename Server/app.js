@@ -4,7 +4,9 @@ import cookieParser from 'cookie-parser';
 import { config } from 'dotenv';
 import morgan from 'morgan';
 import useRoutes from './routes/user.routes.js';
-import errorMiddleware from './middlewares/error.middleware.js';
+//import courseRoutes from './routes/course.routes.js';
+import paymentRoutes from './routes/payment.routes.js'
+;import errorMiddleware from './middlewares/error.middleware.js';
 import courseRoutes from './routes/course.routes.js';
 config();
 
@@ -30,6 +32,7 @@ app.use(morgan('dev'));
 
 app.use('/api/v1/user', useRoutes);
 app.use('/api/v1/courses',courseRoutes);
+app.use('/api/v1/payments',paymentRoutes);
 
 
 app.all('*',(req,res) => {

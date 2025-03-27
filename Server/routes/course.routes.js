@@ -16,7 +16,6 @@ router.route('/:id')
     .get(isLoggedIn, getLecturesByCourseId)
     .put(isLoggedIn, authorizedRoles('ADMIN'),updateCourse)
     .delete(isLoggedIn, authorizedRoles('ADMIN'),removeCourse)
-    .post(isLoggedIn, authorizedRoles('ADMIN'),upload.single('lecture'),addLectureToCourseById)
-    ;
+    .post(isLoggedIn, authorizedRoles('ADMIN'),upload.single('lecture'),addLectureToCourseById);
 
 export default router;
