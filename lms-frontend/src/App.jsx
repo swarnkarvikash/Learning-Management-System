@@ -1,12 +1,15 @@
+import './App.css';
 
-import './App.css'
+import { Routes } from 'react-router-dom';
+
 
 function App() {
 
   return(
     <>
-    <div className='text-red-500 '>lms</div>
-   
+      <Routes>
+        {/*  <Route path="/" element={<Home />}> </Route> */}
+      </Routes>
     </>
   )
 }
