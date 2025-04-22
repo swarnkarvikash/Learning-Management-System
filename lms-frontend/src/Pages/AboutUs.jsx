@@ -1,3 +1,4 @@
+import CarouselSlide from "../Components/CarouselSlide";
 import HomeLayout from "../Layouts/HomeLayout";
 import aboutMainImage from '../assets/Images/aboutMainImage.png';
 import apj from '../assets/Images/apj.png';
@@ -9,6 +10,39 @@ import steveJobs from '../assets/Images/steveJobs.png';
 
 
 function AboutUs(){
+
+    // const celebrities = [
+    //     {
+    //         title: 'Nelson Mandela',
+    //         descrption: 'Education is the most powerful tool you can use to change the world.',
+    //         image: nelsonMandela,
+    //         slideNumber: 1
+    //     },
+    //     {
+    //         title: 'APJ Abdul Kalam',
+    //         descrption: 'Education is the most powerful tool you can use to change the world.',
+    //         image: apj,
+    //         slideNumber: 2
+    //     },
+    //     {
+    //         title: 'Albert Einsteion',
+    //         descrption: 'Education is the most powerful tool you can use to change the world.',
+    //         image: einstein,
+    //         slideNumber: 3
+    //     },
+    //     {
+    //         title: 'Steve Jobs',
+    //         descrption: 'Education is the most powerful tool you can use to change the world.',
+    //         image: steveJobs,
+    //         slideNumber: 4
+    //     },
+    //     {
+    //         title: 'Bill Gates',
+    //         descrption: 'Education is the most powerful tool you can use to change the world.',
+    //         image: billGates,
+    //         slideNumber: 5
+    //     },
+    // ]
     return(
         <HomeLayout>
             <div className="pl-20 pt-20 flex flex-col text-white">
@@ -37,6 +71,7 @@ function AboutUs(){
                 </div>
 
                 <div className="carousel w-1/2 my-10 mx-auto">
+                <CarouselSlide />
                     <div id="slide1" className="carousel-item relative w-full">
                         <div className='flex flex-col items-center justify-center gap-4 px-[15%]'>
                             <img src={apj} className="w-40 rounded-full border-2 border-gray-400" />
