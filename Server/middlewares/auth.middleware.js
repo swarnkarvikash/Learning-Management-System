@@ -1,3 +1,6 @@
+//import subscription from "razorpay/dist/types/subscription.js";
+import Razorpay from 'razorpay';
+
 import AppError from "../utils/error.util.js";
 import jwt from 'jsonwebtoken';
 
@@ -25,7 +28,19 @@ const authorizedRoles = (...roles) => async (req, res,next) => {
     next();
 }
 
+const authorizeSubscriber = async(req, res,next) => {
+    const subscription = req.user.subscriptions;
+    const currentUserRole = req.user.role;
+    if(currentUserRole !== 'ADMIN' && subscription.status != 'active'){
+        return next(
+            new AppError('Please subscribe to access this route!',403)
+        )
+    }
+    next();
+}
+
 export {
     isLoggedIn,
-    authorizedRoles
+    authorizedRoles,
+    authorizeSubscriber
 }
