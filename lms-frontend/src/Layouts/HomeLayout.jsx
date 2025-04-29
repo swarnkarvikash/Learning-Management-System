@@ -51,7 +51,7 @@ function HomeLayout({ children }) {
                 <div className="drawer-side w-0">
                     <label htmlFor="my-drawer" className='drawer-overlay'>
                     </label>
-                    <ul className="menu p-4 w-48 h-[100%]  sm:w-80 bg-base-100 text-base-content relative">
+                    <ul className="menu p-4 w-48 h-screen sm:w-80 bg-base-100 text-base-content flex flex-col justify-between">
                         <li className='w-fit absolute right-2 z-50'>
                             <button onClick={hideDrawer}>
                                 <AiFillCloseCircle size={24}></AiFillCloseCircle>
@@ -84,7 +84,7 @@ function HomeLayout({ children }) {
                                     <Link to="/login">Login</Link>
                                 </button>
                                 <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full bg-pink-600'>
-                                    <Link to="/login">Signup</Link>
+                                    <Link to="/signup">Signup</Link>
                                 </button>
                             </div>
                             </li>
@@ -93,10 +93,10 @@ function HomeLayout({ children }) {
                     {isLoggedIn && (
                             <li className='relative bottom-4 w-[90%]'>
                             <div className="w-full flex items-center justify-center">
-                                <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full'>
+                                <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full bg-blue-600'>
                                     <Link to="/user/profile">Profile</Link>
                                 </button>
-                                <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full'>
+                                <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full bg-pink-600'>
                                     <Link onClick={handlelogout}>Logout</Link>
                                 </button>
                             </div>
