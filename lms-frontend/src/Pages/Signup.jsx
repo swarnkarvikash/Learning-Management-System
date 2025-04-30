@@ -37,8 +37,8 @@ function Signup() {
         //getting the image
         const uploadedImage = event.target.files[0];
 
-        if(uploadedImage){
-            setSignupData({
+        if(!uploadedImage) return;
+        setSignupData({
                 ...signupData,
                 avatar: uploadedImage
             });
@@ -47,7 +47,7 @@ function Signup() {
         fileReader.addEventListener("load", function () {
             setPreviewImage(this.result);
         })
-        }
+        
     }
 
     async function createNewAccount(event){
@@ -57,7 +57,7 @@ function Signup() {
             return;
         }
 
-        if(signupData.fullname.length < 5){
+        if(signupData.fullName.length < 5){
             toast.error("Name should be atleast of 5 characters");
             return;
         }
@@ -68,10 +68,13 @@ function Signup() {
         }
         
 
-        if(!signupData.password.match(/^(\S)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹])[a-zA-Z0-9~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]{10,16}$/)){
-            toast.error("Password should be 10-16 characters long and strong");
+        if (!signupData.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\w\W]*$/)) {
+            toast.error("Password should contain at least one uppercase letter, one lowercase letter, and one digit");
             return;
         }
+        
+        
+          
         
         
 
@@ -84,8 +87,11 @@ function Signup() {
         //dispatch create account action
 
         const response = await dispatch(createAccount(formData));
-        if(response.payload?.success)
+
+
+        if(response?.payload?.data) {
             navigate("/");
+        }
         setSignupData({
             fullName: "",
             email: "",
@@ -153,7 +159,7 @@ function Signup() {
                         placeholder='Enter your name..'
                         className='bg-transparent px-2 py-1 border'
                         onChange={handleUserInput}
-                        value={signupData.fullname}
+                        value={signupData.fullName}
                         />
                     </div>
 
