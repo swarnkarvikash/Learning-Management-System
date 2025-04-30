@@ -58,6 +58,7 @@ function HomeLayout({ children }) {
                                 <AiFillCloseCircle size={24}></AiFillCloseCircle>
                             </button>
                         </li>
+                        <div>
                         <li>
                             <Link to="/">Home</Link>
                         </li>
@@ -77,7 +78,7 @@ function HomeLayout({ children }) {
                         <li>
                             <Link to="/about">About Us</Link>
                         </li>
-                        
+                        </div>
                         {!isLoggedIn && (
                             <li className='relative bottom-4 w-[90%]'>
                             <div className="w-full flex items-center justify-center">

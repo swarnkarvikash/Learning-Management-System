@@ -3,12 +3,12 @@ import axiosInstance from "../../Helpers/axiosInstance";
 import {toast} from "react-hot-toast";
 
 const initialState = {
-    courssdData: []
+    courseData: []
 }
 
 export const getAllCourses = createAsyncThunk("/course/get", async() => {
     try{
-        const response = axiosInstance.get("/course");
+        const response = axiosInstance.get("/courses");
         toast.promise(response, {
             loading: "loading course data...",
             success: "Courses loaded successfully",
@@ -17,7 +17,7 @@ export const getAllCourses = createAsyncThunk("/course/get", async() => {
 
         return (await response).data.courses;
     }catch(error){
-        toast.error(error?.response?.data?.message);
+        toast.error(error?.response?.data?.message || "something went wrong");
     }
 })
 
@@ -26,7 +26,11 @@ const courseSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-
+        builder.addCase(getAllCourses.fulfilled, (state, action) => {
+            if(action.payload){
+                state.courseData = [...action.payload];
+            }
+        })
     }
 });
 
