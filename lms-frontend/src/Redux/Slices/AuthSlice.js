@@ -11,7 +11,7 @@ const initialState = {
 
 export const createAccount = createAsyncThunk("/auth/signup", async (data) => {
     try {
-        const response = axiosInstance.post("user/register", data);
+        const response = await axiosInstance.post("user/register", data);
         toast.promise(response, {
             loading: 'Wait! creating your account',
             success: (data) => {
@@ -19,7 +19,7 @@ export const createAccount = createAsyncThunk("/auth/signup", async (data) => {
             },
             error: 'Failed to create your account'
         });
-        return await response.data;
+        return response.data;
     } catch(error) {
         console.log(error);
         toast.error(error?.response?.data?.message);
@@ -54,7 +54,7 @@ export const logout = createAsyncThunk("/auth/logout", async() => {
             },
             error: 'Failed log out your account'
         });
-        return await response;
+        return await response.data;
     }catch(error){
         toast.error(error?.response?.data?.message);
     }
