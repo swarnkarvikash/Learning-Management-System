@@ -11,3 +11,4 @@ function RequireAuth({ allowedRoles }){
 }
 
 export default RequireAuth;
+
