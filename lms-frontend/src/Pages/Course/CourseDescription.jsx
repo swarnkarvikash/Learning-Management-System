@@ -1,4 +1,4 @@
-i
+
 import { useLocation } from "react-router-dom";
 import HomeLayout from "../../Layouts/HomeLayout";
 import { useSelector } from "react-redux";
@@ -23,7 +23,7 @@ function CourseDescription(){
                             alt="thumbnail" 
                             />
                             <div className="space-y-4">
-                                <div className="flex  flex-colitems-center justify-between text-xl">
+                                <div className="flex  flex-col items-center justify-between text-xl">
 
                                     <p className="font-semibold">
                                         <span>
